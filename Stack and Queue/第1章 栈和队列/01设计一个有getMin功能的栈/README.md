@@ -36,7 +36,9 @@ public void push(int newNum) {
 ```
 
  - 弹出数据规则(**个人理解: 这步是为了去除stackMin中重复的最小元素**)
+
     现在stackData弹出栈顶, 并记为value. 然后和stackMin栈顶元素比较大小(由压入数据得知, stackMin中的元素由下至上越来越小, 且stackMin的栈顶是最小的袁术, 不可能出现value < stackMin栈顶元素的情况):
+    
      - value = stackMin栈顶元素, stackMin弹出栈顶元素;
      - value > stackMin栈顶元素, stackMin不弹出栈顶元素;
      - 返回value.
