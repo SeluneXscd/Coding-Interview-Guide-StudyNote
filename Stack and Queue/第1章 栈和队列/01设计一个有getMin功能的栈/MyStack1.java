@@ -3,8 +3,8 @@ import java.util.Stack;
 import javax.management.RuntimeErrorException;
 
 public class MyStack1 {
-    private Stack<Integer> stackData;
-    private Stack<Integer> stackMin;
+    public Stack<Integer> stackData;
+    public Stack<Integer> stackMin;
 
     public MyStack1() {
         this.stackData = new Stack<>();
@@ -23,18 +23,10 @@ public class MyStack1 {
     public void push(int newNum) {
         if(this.stackMin.isEmpty()) {
             this.stackMin.push(newNum);
-        } else if(this.stackMin.peek() > newNum) {
+        } else if(this.stackMin.peek() >= newNum) {
             this.stackMin.push(newNum);
         }
         this.stackData.push(newNum);
-    }
-
-    public int peekData() {
-        return this.stackData.peek();
-    }
-
-    public int peekMin() {
-        return this.stackMin.peek();
     }
 
     /**
@@ -48,7 +40,7 @@ public class MyStack1 {
             throw new RuntimeException("Your Stack is Empty!");
         }
         int value = this.stackData.pop();
-        if(value == this.stackMin.peek()) {
+        if(value == this.getMin()) {
             this.stackMin.pop();
         }
         return value;
@@ -63,5 +55,19 @@ public class MyStack1 {
             throw new RuntimeException("Your Stack is Empty!");
         }
         return this.stackMin.peek();
+    }
+    
+    public static void main(String[] args) {
+        MyStack1 myStack1 = new MyStack1();
+        int[] nums = {3, 4, 5, 1, 2, 1};
+
+        for (Integer num : nums) {
+            myStack1.push(num);
+        }
+
+        myStack1.pop();
+
+        int min = myStack1.getMin();
+        System.out.println(min);
     }
 }
