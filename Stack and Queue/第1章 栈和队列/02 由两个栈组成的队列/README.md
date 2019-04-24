@@ -24,7 +24,7 @@ public Stack<Integer> stackPop;
 压入数据：
 
 ```java
-public add(int pushInt) {
+public void add(int pushInt) {
     stackPush.push(pushInt);
 }
 ```
